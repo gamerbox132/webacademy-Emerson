@@ -1,4 +1,4 @@
-name: Primeiro Workflow
+name: Primeiro Workflow 01
 
 on:
     push:

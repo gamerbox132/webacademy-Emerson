@@ -1,4 +1,4 @@
-name: quarto Workflow
+name: primeiro Workflow 04
 
 on:
     push:
@@ -32,3 +32,7 @@ jobs:
                    echo "Branch utilizada- ${{ github.ref_name }}"
             - name: Verificando se existe o arquivo README.md
               run: if [ -f README.md ]; then echo "o arquivo README foi encontrado"; else echo "o arquivo README não foi encontrado"; exit 1; fi
+            - name: Verificando se existe o arquivo LICENSE
+              run: if [ -f LICENSE ]; then echo "o arquivo LICENSE foi encontrado"; else echo "o arquivo LICENSE não foi encontrado"; exit 1; fi
+            - name: Verificando se existe o arquivo .gitignore
+              run: if [ -f .gitignore ]; then echo "o arquivo .gitignore foi encontrado"; else echo "o arquivo .gitignore não foi encontrado"; exit 1; fi
