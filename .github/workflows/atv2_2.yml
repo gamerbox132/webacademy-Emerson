@@ -1,4 +1,4 @@
-name: primeiro Workflow 02
+name: segundo Workflow 
 
 on:
     push:
@@ -6,7 +6,7 @@ jobs:
     primeiro-job:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Primeiro passo"
+            - run: echo "atv 2.2"
             - name: Checkout
               uses: actions/checkout@v5
             - name: Lista arquivos

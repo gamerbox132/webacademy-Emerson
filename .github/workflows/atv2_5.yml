@@ -1,0 +1,62 @@
+name: quinto Workflow
+
+on:
+  push:
+
+env:
+  CURSO: "Integração Contínua"
+
+jobs:
+  primeiro-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "atv 2.5"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lista arquivos
+        run: ls ${{ github.workspace }}
+
+      - name: Status
+        run: echo "Status ${{ job.status }}."
+
+      - name: A data e hora da execução
+        run: echo "a hora atual e data tmb do runner $(date)"
+
+      - name: Exibir o sistema operacional do runner
+        run: echo "o sistema operacional e ${{ runner.os }}"
+
+      - name: Exibir a versão do Git
+        run: git --version
+
+      - name: Exibir os dados do curso e do GitHub
+        run: |
+          echo "Nome do curso- ${{ env.CURSO }}"
+          echo "Usuário que executou- ${{ github.actor }}"
+          echo "Nome do repositório- ${{ github.repository }}"
+          echo "Branch utilizada- ${{ github.ref_name }}"
+
+  segundo-job:
+    runs-on: ubuntu-latest
+    needs: primeiro-job
+    steps:
+      - run: echo "atv 2.5"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Listar os arquivos do projeto (Recursivo)
+        run: ls -R
+
+      - name: Exibir o conteúdo do arquivo README.md
+        run: cat README.md
+
+      - name: Verificando se existe o arquivo README.md
+        run: if [ -f README.md ]; then echo "o arquivo README foi encontrado"; else echo "o arquivo README não foi encontrado"; exit 1; fi
+
+      - name: Verificando se existe o arquivo LICENSE
+        run: if [ -f LICENSE ]; then echo "o arquivo LICENSE foi encontrado"; else echo "o arquivo LICENSE não foi encontrado"; exit 1; fi
+
+      - name: Verificando se existe o arquivo .gitignore
+        run: if [ -f .gitignore ]; then echo "o arquivo .gitignore foi encontrado"; else echo "o arquivo .gitignore não foi encontrado"; exit 1; fi
