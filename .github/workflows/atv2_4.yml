@@ -31,9 +31,4 @@ jobs:
                    echo "Nome do repositório- ${{ github.repository }}"
                    echo "Branch utilizada- ${{ github.ref_name }}"
             - name: Verificando se existe o arquivo README.md
-              run: if [ -f README.md ]; then
-                     echo "o arquivo README foi encontrado"
-                   else
-                     echo "o arquivo README não foi encontrado"
-                     exit 1
-                   fi
+              run: if [ -f README.md ]; then echo "o arquivo README foi encontrado"; else echo "o arquivo README não foi encontrado"; exit 1; fi
