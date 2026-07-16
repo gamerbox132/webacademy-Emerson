@@ -2,6 +2,8 @@ name: Primeiro Workflow
 
 on:
     push:
+env:
+  CURSO: "Integração Contínua"
 jobs:
     primeiro-job:
         runs-on: ubuntu-latest
@@ -23,3 +25,8 @@ jobs:
               run: cat README.md
             - name: Listar os arquivos do projeto
               run: ls -R
+            - name: 5. Exibir os dados do curso e do GitHub
+              run: echo "Nome do curso- ${{ env.CURSO }}"
+                   echo "Usuário que executou- ${{ github.actor }}"
+                   echo "Nome do repositório- ${{ github.repository }}"
+                   echo "Branch utilizada- ${{ github.ref_name }}"
