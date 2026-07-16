@@ -1,0 +1,25 @@
+name: Primeiro Workflow
+
+on:
+    push:
+jobs:
+    primeiro-job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Primeiro passo"
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Lista arquivos
+              run: ls ${{github.workspace}}
+            - name: Status
+              run: echo "Status ${{job.status}}."
+            - name: A data e hora da execução
+              run: echo "a hora atual e data tmb do runner:" date
+            - name: Exibir o sistema operacional do runner
+              run: echo "o sistema operacional e:" ${{runner.os}}
+            - name: Exibir a versão do Git
+              run: git --version
+            - name: Exibir o conteúdo do arquivo README.md
+              run: cat README.md
+            - name: Listar os arquivos do projeto
+              run: ls -R
