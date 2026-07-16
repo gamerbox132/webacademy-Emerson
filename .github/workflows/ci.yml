@@ -20,11 +20,6 @@ jobs:
             - name: Exibir a versão do Git
               run: git --version
             - name: Exibir o conteúdo do arquivo README.md
-              run: if [ -f README.md ]; then
-                    cat README.md
-                else
-                    echo "Arquivo README.md não foi encontrado na raiz do projeto."
-                fi
-
+              run: cat README.md
             - name: Listar os arquivos do projeto
               run: ls -R
